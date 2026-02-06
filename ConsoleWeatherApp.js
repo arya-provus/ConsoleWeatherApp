@@ -1,7 +1,9 @@
-import { createInterface } from 'node:readline/promises'; // this is node library that allows user to input his data {it awaits as accepting user data is asynchronous operation}
-import { stdin as input, stdout as output } from 'node:process';//the input is being taken from keyboard and op from screen
+const readline = require('node:readline/promises');
+ // this is node library that allows user to input his data {it awaits as accepting user data is asynchronous operation}
 
-const rl = createInterface({ input, output });//rl is the object that we will use to take the input from user
+const { stdin: input, stdout: output } = require('node:process');//the input is being taken from keyboard and op from screen
+
+const rl =  readline.createInterface({ input, output });//rl is the object that we will use to take the input from user
 
 
 
