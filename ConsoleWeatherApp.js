@@ -1,7 +1,9 @@
-import { createInterface } from 'node:readline/promises'; // this is node library that allows user to input his data {it awaits as accepting user data is asynchronous operation}
-import { stdin as input, stdout as output } from 'node:process';//the input is being taken from keyboard and op from screen
+const readline = require('node:readline/promises');
+ // this is node library that allows user to input his data {it awaits as accepting user data is asynchronous operation}
 
-const rl = createInterface({ input, output });//rl is the object that we will use to take the input from user
+const { stdin: input, stdout: output } = require('node:process');//the input is being taken from keyboard and op from screen
+
+const rl =  readline.createInterface({ input, output });//rl is the object that we will use to take the input from user
 
 
 
@@ -77,7 +79,7 @@ async function fetchWeather() {
     }
 }
 
-
+//fetching weather details with latitude and Longitude
 async function getWeatherByLocation(lat,lon){
     try{
         const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0e103eeafaec0c224a863c546ac6d304&units=metric`);
@@ -100,6 +102,7 @@ async function getWeatherByLocation(lat,lon){
     }
 }
 
+//fetching current location weather details with help of IP adress
 async function getWeatherUsingIP() {
     try {
         console.log("Fetching your location with IP address......");
@@ -117,6 +120,7 @@ async function getWeatherUsingIP() {
         console.log("IP location not found.");
     }
 }
+
 
 async function getWeatherByLatLong(){
    try{
